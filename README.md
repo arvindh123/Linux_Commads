@@ -31,7 +31,7 @@ END $$;
 
 ## RIOT-OS  Running in WSL 
 Install addition things to run 32 bit .elf file in 64 bit WSL, If the WSL is old and if you can't able to update to WSL2
--  Step 1: ''' sudo apt update '''
--  Step 2: ''' sudo apt install qemu-user-static '''
--  Step 3: ''' sudo update-binfmts --install i386 /usr/bin/qemu-i386-static --magic '\x7fELF\x01\x01\x01\x03\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\x03\x00\x01\x00\x00\x00' --mask '\xff\xff\xff\xff\xff\xff\xff\xfc\xff\xff\xff\xff\xff\xff\xff\xff\xf8\xff\xff\xff\xff\xff\xff\xff' '''
+-  ``` sudo apt update ```
+-  ``` sudo apt install qemu-user-static ```
+-  ``` sudo update-binfmts --install i386 /usr/bin/qemu-i386-static --magic '\x7fELF\x01\x01\x01\x03\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\x03\x00\x01\x00\x00\x00' --mask '\xff\xff\xff\xff\xff\xff\xff\xfc\xff\xff\xff\xff\xff\xff\xff\xff\xf8\xff\xff\xff\xff\xff\xff\xff' ```
 
