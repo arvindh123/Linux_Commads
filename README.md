@@ -42,5 +42,5 @@ Install addition things to run 32 bit .elf file in 64 bit WSL, If the WSL is old
 ``` ps -p 1 -o comm= ```
 ## To put the logger to another file 
 ##### At peresent it make no sense, we can directly use tee
-``` logger --no-act  -s "Oh dear..." 2>&1  |  tee -a test.log ```
+``` logger --no-act  -s "Some Message to Logger" 2>&1  |  tee -a test.log ```
 
