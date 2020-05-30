@@ -41,6 +41,6 @@ Install addition things to run 32 bit .elf file in 64 bit WSL, If the WSL is old
 ## To get 1st Pid Command , to find the SystemV or Systemd or Upstart
 ``` ps -p 1 -o comm= ```
 ## To put the logger to another file 
-#####At peresent it make no sense, we can directly use tee
+##### At peresent it make no sense, we can directly use tee
 ``` logger --no-act  -s "Oh dear..." 2>&1  |  tee -a test.log ```
 
