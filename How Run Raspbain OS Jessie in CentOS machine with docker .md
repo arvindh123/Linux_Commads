@@ -39,16 +39,15 @@ Create Dokcer File
 nano dockerfile 
 ```
 
-Add the following content in the file if you followed this command  ``` docker run --rm --privileged multiarch/qemu-user-static --reset -p yes ```  and got successfull installtion 
+If you followed this command  ``` docker run --rm --privileged multiarch/qemu-user-static --reset -p yes ```  and got successfull installtion  qemu-user-static without any error , then add the following lines in dockerfile
 ```
 FROM scratch
 ADD raspbian_lite_2017-02-27-1526_root.tar.xz  /
-COPY --from=qemu /usr/bin/qemu-arm-static /usr/bin 
 CMD ["bash"]
 ```
 
-Add the following content in the file if you got failed and installed qemu-user-static with following command  ``` docker run --rm --privileged multiarch/qemu-user-static --reset  ```
-Add the following lines if centos older version
+If you got failed in STEP 3  and installed qemu-user-static with following command  ``` docker run --rm --privileged multiarch/qemu-user-static --reset  ``` , then add the  following lines in dockerfile 
+
 ```
 FROM multiarch/qemu-user-static:arm as qemu
 FROM scratch
