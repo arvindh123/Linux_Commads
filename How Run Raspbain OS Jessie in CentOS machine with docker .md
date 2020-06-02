@@ -6,13 +6,23 @@ Install Docker ;-)
 
 
 ## Step 2 
-sudo apt install binfmt-support qemu qemu-user-static debootstrap  schroot (This was needed or not need to validate)
+Install the requirements (This was needed or not need to validate)
+```
+sudo apt install binfmt-support qemu qemu-user-static debootstrap  schroot
+```
+
 
 
 ## Step 3
+Run the below docker command 
+```
+ docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+```
 
+If are getting failed the your are running centos with kernal of older run , to overcome these run  below 
+```
 docker run --rm --privileged multiarch/qemu-user-static --reset 
-
+```
 
 ## Step 4 
 Donwload the raspbain jessie form the following link
@@ -28,12 +38,22 @@ Create Dokcer File
 ```
 nano dockerfile 
 ```
-Add the following lines
+
+Add the following content in the file if you followed this command  ``` docker run --rm --privileged multiarch/qemu-user-static --reset -p yes ```  and got successfull installtion 
+```
+FROM scratch
+ADD raspbian_lite_2017-02-27-1526_root.tar.xz  /
+COPY --from=qemu /usr/bin/qemu-arm-static /usr/bin 
+CMD ["bash"]
+```
+
+Add the following content in the file if you got failed and installed qemu-user-static with following command  ``` docker run --rm --privileged multiarch/qemu-user-static --reset  ```
+Add the following lines if centos older version
 ```
 FROM multiarch/qemu-user-static:arm as qemu
 FROM scratch
 ADD raspbian_lite_2017-02-27-1526_root.tar.xz  /
-COPY --from=qemu /usr/bin/qemu-arm-static /usr/bin
+COPY --from=qemu /usr/bin/qemu-arm-static /usr/bin 
 CMD ["bash"]
 ```
 
@@ -54,3 +74,5 @@ docker run --rm -t raspbain-jessie-lite-qemu-arm32-2017-02-27:latest		 uname -m
 ```
 armv7l
 ```
+
+## If Any this is mentioned wrong feel free to edit it.
