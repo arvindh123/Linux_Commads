@@ -46,16 +46,16 @@ Install addition things to run 32 bit .elf file in 64 bit WSL, If the WSL is old
 
 ## Docker Stat Log to File 
 ### Linux 
-'''
+```
 SET CONTAINER_NAME="Test_Container_Name"
-'''
-'''
+```
+```
 docker stats --format "{{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}\t{{.BlockIO}}\t{{.MemPerc}}\t{{.PIDs}}" $CONTAINER_NAME | ts | tee -a $CONTAINER_NAME.log
-'''
+```
 ### Windows Powershell
-'''
+```
  Set-Variable -Name "CONTAINER_NAME" -Value "Test_Container_Name"
- '''
- '''
+```
+```
 docker stats --format "{{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}\t{{.BlockIO}}\t{{.MemPerc}}\t{{.PIDs}}" $CONTAINER_NAME |  %{ "{0:HH:mm:ss:fff}: {1}" -f (Get-Date), $_ } | t| tee -FilePath $CONTAINER_NAME.log -Append
-'''
+```
