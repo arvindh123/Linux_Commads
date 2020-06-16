@@ -47,7 +47,7 @@ Install addition things to run 32 bit .elf file in 64 bit WSL, If the WSL is old
 ## Docker Stat Single container to Log File 
 ### Linux 
 ```
-SET CONTAINER_NAME="Test_Container_Name"
+CONTAINER_NAME="Test_Container_Name"
 ```
 ```
 docker stats --format "{{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}\t{{.BlockIO}}\t{{.MemPerc}}\t{{.PIDs}}" $CONTAINER_NAME | ts | tee -a $CONTAINER_NAME.log
