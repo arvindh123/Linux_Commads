@@ -1,6 +1,11 @@
 
 # How Run Raspbain OS Jessie in CentOS machine with docker 
 
+## Why Its is needed 
+if you try to run armf binaries docker in amd64 docker machine , you will get the following error 
+```
+standard_init_linux.go:211: exec user process caused "exec format error"
+```
 ## Step 1
 Install Docker ;-)
 
