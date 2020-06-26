@@ -1,0 +1,21 @@
+FROM multiarch/qemu-user-static:arm as qemu
+FROM scratch
+ADD root.tar.xz  /
+COPY --from=qemu /usr/bin/qemu-arm-static /usr/bin 
+RUN apt-get update 
+RUN wget https://dl.google.com/go/go1.12.6.linux-armv6l.tar.gz
+RUN apt-get update 
+RUN wget https://dl.google.com/go/go1.14.4.linux-armv6l.tar.gz
+RUN tar -C /usr/local -xzf go1.14.4.linux-armv6l.tar.gz
+RUN rm go1.14.4.linux-armv6l.tar.gz 
+
+RUN apt-get -y install git
+
+ENV PATH="/usr/local/go/bin:${PATH}"
+ENV GOPATH="/root/golang"
+
+RUN mkdir -p /root/golang
+
+ADD digitalapps.saint-gobain.net.crt /usr/local/share/ca-certificates/.
+RUN update-ca-certificates 
+CMD ["bash"]
