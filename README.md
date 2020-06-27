@@ -59,3 +59,8 @@ docker stats --format "{{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}\t{{.Bl
 ```
 docker stats --format "{{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}\t{{.BlockIO}}\t{{.MemPerc}}\t{{.PIDs}}" $CONTAINER_NAME |  %{ "{0:HH:mm:ss:fff}: {1}" -f (Get-Date), $_ } | tee -FilePath "$($CONTAINER_NAME).log" -Append
 ```
+
+## Trigger Command on chnages in File system in Linux with inotify 
+```
+inotifywait -rme modify,move,close_write,create,delete,delete_self $(pwd) |  while read dir action file; do if [ "${file##*.}" == "deb" ]; then rm -rf $dir/Packages.gz ;  dpkg-scanpackages $dir  /dev/null | gzip -9c > $dir/Packages.gz; fi ;done
+```
