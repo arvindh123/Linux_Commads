@@ -1,0 +1,13 @@
+[Unit]
+Description=This service will update the DPKG packages when create,delete,move,modified,etc..
+After=network.target
+
+[Service]
+ExecStart=/bin/bash -c "inotifywait -rme modify,move,close_write,create,delete,delete_self $ARG1 |  while read dir action file; do if [ "${file##*.}" == "deb" ]; then rm -rf $dir/Packages.gz ;  dpkg-scanpackages $dir  /dev/null | gzip -9c > $dir/Packages.gz; fi ;done"
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
