@@ -1,0 +1,16 @@
+[Unit]
+Description=This service will update the DPKG packages in folder  "%I"  when create,delete,move,modified,etc..
+After=network.target
+
+
+[Service]
+Type=Simple
+ExecStart=/home/indec40/Music/updateDebRepo.sh "%I"
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+RestartSec=5
+User=root
+
+[Install]
+WantedBy=multi-user.target
