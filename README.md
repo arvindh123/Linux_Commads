@@ -64,3 +64,5 @@ docker stats --format "{{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}\t{{.Bl
 ```
 inotifywait -rme modify,move,close_write,create,delete,delete_self $(pwd) |  while read dir action file; do if [ "${file##*.}" == "deb" ]; then rm -rf $dir/Packages.gz ;  dpkg-scanpackages $dir  /dev/null | gzip -9c > $dir/Packages.gz; fi ;done
 ```
+## LetsEncrypt Docker manual 
+docker run -it -v C:\\Users\\Users\\Documents:/etc/letsencrypt certbot/certbot certonly --manual --preferred-challenges dns --email myemail@gmail.com --server https://acme-v02.api.letsencrypt.org/directory --agree-tos -d example.com
