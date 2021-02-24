@@ -1,3 +1,4 @@
+# Timescaledb v1.7.1
 # Step -1 
 Install the timescaledb repo
 ```
@@ -80,4 +81,9 @@ SELECT create_hypertable('daq.data', 'time',chunk_time_interval => INTERVAL '1 d
 # Step - 14
 ```
 CREATE INDEX ON daq.data (time DESC, machineref);
+```
+
+# Step - 15
+```
+SELECT add_drop_chunks_policy('daq.data', INTERVAL '336 hours');
 ```
