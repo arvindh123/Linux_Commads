@@ -79,5 +79,5 @@ SELECT create_hypertable('daq.data', 'time',chunk_time_interval => INTERVAL '1 d
 ```
 # Step - 14
 ```
-CREATE INDEX ON sgri.temp1 (time DESC, machineref);
+CREATE INDEX ON daq.data (time DESC, machineref);
 ```
