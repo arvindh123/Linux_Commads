@@ -65,7 +65,9 @@ psql
  ```
  
 # Step - 12
+
 ```
+CREATE SCHEMA daq;
 CREATE TABLE daq.data (                                                               
  "time" timestamptz NOT NULL,
  machineref int4 NOT NULL,
