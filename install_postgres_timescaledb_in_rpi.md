@@ -87,3 +87,7 @@ CREATE INDEX ON daq.data (time DESC, machineref);
 ```
 SELECT add_drop_chunks_policy('daq.data', INTERVAL '336 hours');
 ```
+# Step -16
+```
+ALTER USER postgres WITH PASSWORD 'postgres';
+```
