@@ -66,3 +66,10 @@ inotifywait -rme modify,move,close_write,create,delete,delete_self $(pwd) |  whi
 ```
 ## LetsEncrypt Docker manual 
 docker run -it -v C:\\Users\\Users\\Documents:/etc/letsencrypt certbot/certbot certonly --manual --preferred-challenges dns --email myemail@gmail.com --server https://acme-v02.api.letsencrypt.org/directory --agree-tos -d example.com
+
+# Get Internet access to remove server via ssh 
+### Step - 1   
+Install squid  
+### Step - 2  
+ ssh -R dest-machine-port:127.0.0.1:squid-port  -J Domain\\\\username@jump-ip-address  username@dest-ip-address   
+ ssh -R 3129:127.0.0.1:3128  -J home\\\\admin@192.168.1.104  admin@192.168.1.105   
