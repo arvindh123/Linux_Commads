@@ -29,6 +29,16 @@ Install timescaledb with postgres
 sudo apt-get install timescaledb-1.7.1-postgresql-11=1.7.1~debian10
 ```
 
+# Optional steps to Initalize and tune
+```
+sudo su postgres 
+/usr/pgsql-12/bin/pg_ctl initdb
+ sudo timescaledb-tune --pg-config=/usr/pgsql-12/bin/pg_config --conf-path /DATA/pgdata/12/data/postgresql.conf 
+ or 
+sudo timescaledb-tune --pg-config=/usr/pgsql-12/bin/pg_config 
+```
+
+
 # Step - 5
 ```
 echo "shared_preload_libraries = 'timescaledb'" >>   /etc/postgresql/11/main/postgresql.conf
