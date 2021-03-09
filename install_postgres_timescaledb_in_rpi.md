@@ -98,6 +98,8 @@ CREATE INDEX ON daq.data (time DESC, machineref);
 # Step - 15
 ```
 SELECT add_drop_chunks_policy('daq.data', INTERVAL '336 hours');
+or 
+SELECT drop_chunks('daq.data', INTERVAL '336 hours');
 ```
 
 # Step -16
