@@ -1,0 +1,16 @@
+[Unit]
+Description=wstun service 
+After=network.target
+
+[Service]
+
+
+ExecStart=  /bin/bash -c 'PORTS=%i; REM=${PORTS%:*} ; LOC=${PORTS#*:}; exec /home/admin/wstun/bin/wstun.js  -r$${REM}:127.0.0.1:$${LOC} wss://wstun-server:443'
+WorkingDirectory=/home/admin/wstun/bin
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
